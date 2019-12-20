@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  {% assign sorted = site.posts | sort: 'number' %}
+
+  <div class="main-content" itemprop="articleBody">
+    {% for post in sorted %}
+
+    <header class="post-header">
+      {% if post.title != 'Filler' %}
+      <h3 class="post-title" itemprop="name headline">{{ post.title }}</h3>
+      {% endif %}
+    </header>
+
+    {{ post.content }}
+    {% endfor %}
+
+  </div>
+
+
+
+</article>

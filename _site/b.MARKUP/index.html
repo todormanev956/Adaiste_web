@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="http://localhost:4000/Project_Adaistes/stylesheets/stylesheet.css">
+  <link rel="canonical" href="http://localhost:4000/Project_Adaistes/b.MARKUP/">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  
+  <meta name="description"
+    content="We first need to take a look at the sentiment analysis score of each tweet to see if the score are satisfactory. We did not obtain the best results but they ...">
+
+  <title>Tweet my weather</title>
+
+</head>
+
+  <body>
+
+    <header class="page-header">
+     <h1 class="project-name"> <a class="header-link" href="/Project_Adaistes/"> Tweet my weather</a></h1>
+     <!--<h3 style="font-weight: lighter;">a blog for <a class="header-link" href="http://canijustgo.com/" target="_blank">canijustgo.com</a></h3>-->
+     <h3>A data analysis project</h3>
+</header>
+
+
+    <section class="main-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <div class="main-content" itemprop="articleBody">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Sentiment analysis and score</h1>
+    </header>
+
+    <p>We first need to take a look at the sentiment analysis score of each tweet to see if the score are satisfactory. We did not obtain the best results but they are still workable.</p>
+
+<h2 id="gathering-the-weather-forecast">Gathering the weather forecast</h2>
+
+<p>Getting the weather forecast, even though it is possible to do so for every city, the task is a bit tedious so we choose the 5 biggest cities in our dataset representing the 20% of the data points or around a million tweets. We also naively filtered bots by removing the tweets that appeared at zero seconds, it would also take away 1/60 of our data which is negligeable and it doesn’t affect our results, provided that it is a completely random sample. 200 thousand tweets were filtered leaving us with 800 thousand.
+Graphing the remaining tweets we see that most of them are concentrated in winter 2010. We might have to leave some periods out.</p>
+
+<h3 id="number-of-tweets-h3-title">Number of tweets (H3 title):</h3>
+<p><img src="assets/plot_nr_of_tweets.png" alt="Number of tweets" /></p>
+
+<p>The first thing we’re going to find is the standard deviation of positive and negative sentiments from one day to another. We expect it to follow a normal distribution centered around zero.</p>
+
+<p>Indeed we find a bell shaped curve.</p>
+
+<p><img src="assets/reduced_tweets.png" alt="Reduced tweets" /></p>
+
+  </div>
+
+  <a href="http://localhost:4000/Project_Adaistes">
+    <h3 style="text-align: center;">- to blog -</h3>
+  </a>
+
+</article>
+      </div>
+    </div>
+
+    <p style="font-size: 60%; text-align: right;">blog built using the <a href="https://github.com/jasonlong/cayman-theme">cayman-theme</a> by <a href="https://github.com/jasonlong">Jason Long</a>. <a href="http://creativecommons.org/licenses/by/4.0/">LICENSE</a></p>
+
+
+
+  </body>
+
+
+
+</html>

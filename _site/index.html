@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="http://localhost:4000/Project_Adaistes/stylesheets/stylesheet.css">
+  <link rel="canonical" href="http://localhost:4000/Project_Adaistes/">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  
+  <meta name="description"
+    content="">
+
+  <title>Tweet my weather</title>
+
+</head>
+
+  <body>
+
+    <header class="page-header">
+     <h1 class="project-name"> <a class="header-link" href="/Project_Adaistes/"> Tweet my weather</a></h1>
+     <!--<h3 style="font-weight: lighter;">a blog for <a class="header-link" href="http://canijustgo.com/" target="_blank">canijustgo.com</a></h3>-->
+     <h3>A data analysis project</h3>
+</header>
+
+
+    <section class="main-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  
+
+  <div class="main-content" itemprop="articleBody">
+    
+
+    <header class="post-header">
+      
+      <h3 class="post-title" itemprop="name headline">Can sentiment analysis on tweets say if the weather affects our mood?</h3>
+      
+    </header>
+
+    <p>To answer this question we looked at a dataset of 5 million tweet found on <a href="https://archive.org/details/twitter_cikm_2010">archive.org</a>.
+We performed sentiment analysis and classified each tweet as positive, negative or neutral. This way, we would’t know how much exactly the weather affects us,but just whether it does. We computed the variation in proportion of positively and negatively classified tweets from day to day. Postulating that the general mood for a given day was influenced by the previous day. Our null hypothesis is that the weather does not affect the mood of people.</p>
+
+
+    
+
+    <header class="post-header">
+      
+      <h3 class="post-title" itemprop="name headline">Sentiment analysis and score</h3>
+      
+    </header>
+
+    <p>We first need to take a look at the sentiment analysis score of each tweet to see if the score are satisfactory. We did not obtain the best results but they are still workable.</p>
+
+<h2 id="gathering-the-weather-forecast">Gathering the weather forecast</h2>
+
+<p>Getting the weather forecast, even though it is possible to do so for every city, the task is a bit tedious so we choose the 5 biggest cities in our dataset representing the 20% of the data points or around a million tweets. We also naively filtered bots by removing the tweets that appeared at zero seconds, it would also take away 1/60 of our data which is negligeable and it doesn’t affect our results, provided that it is a completely random sample. 200 thousand tweets were filtered leaving us with 800 thousand.
+Graphing the remaining tweets we see that most of them are concentrated in winter 2010. We might have to leave some periods out.</p>
+
+<h3 id="number-of-tweets-h3-title">Number of tweets (H3 title):</h3>
+<p><img src="assets/plot_nr_of_tweets.png" alt="Number of tweets" /></p>
+
+<p>The first thing we’re going to find is the standard deviation of positive and negative sentiments from one day to another. We expect it to follow a normal distribution centered around zero.</p>
+
+<p>Indeed we find a bell shaped curve.</p>
+
+<p><img src="assets/reduced_tweets.png" alt="Reduced tweets" /></p>
+
+    
+
+    <header class="post-header">
+      
+      <h3 class="post-title" itemprop="name headline">Weather effect</h3>
+      
+    </header>
+
+    <p>We want to know if the weather has an effect on this curve, shifting it to the right during good weather and to the left during bad weather. In order to do that a first metric would be to look at rainy days days and plot the new mood standard deviation.</p>
+
+<h3 id="mood-on-rainy-days">Mood on rainy days:</h3>
+<p><img src="assets/rainy_days.png" alt="Weekly tweets" /></p>
+
+<p>We do observe a shift, but is it enough to conclude that it was the effect of the weather ?</p>
+
+<p>The t value is not sufficient so we can’t reject the hypothesis that which weather has an effect. But maybe it is not the weather that directly influences the mood but its variation, so we define a metric of changing weather which is the weather value of the day minus the one for the previous day. Instead of looking at every possible variation we will look at extremes ones. Here are the result:</p>
+
+<h3 id="effect-of-extreme-weather-variations">Effect of extreme weather variations:</h3>
+
+<p>We find 45 days with sudden weather change. We again observe a shift in the normal distribution. Is it more relevant than before ?</p>
+
+<p>We still can’t reject the null hypothesis.</p>
+
+<p>Is it possible to reduce the variation of other measurable sources, does the sentiment analysis give different results for each day of the week ? And if yes, can we take it into account in our statistical journey.
+We plot the average sentiment variation on the course of the week:</p>
+
+<h3 id="tweet-sentiment-over-the-course-of-the-week">Tweet sentiment over the course of the week:</h3>
+<p><img src="assets/tweets_over_week.png" alt="Weekly tweets" /></p>
+
+<p>The sentiments seems stable during the week so the day is not affecting the sentiments of our dataset</p>
+
+
+    
+
+    <header class="post-header">
+      
+      <h3 class="post-title" itemprop="name headline">Conclusion</h3>
+      
+    </header>
+
+    <p>In our journey we haven’t found any significant results to refute our hypothesis. We have to conduct further research. The next step would be to implement a topic modeling algorithm to track the effect of the weather on the topics presence. If we had some better correlation effects we could have implemented a machine learning model to find the weather from the tweets sentiment analysis.</p>
+
+    
+
+  </div>
+
+
+
+</article>
+      </div>
+    </div>
+
+    <p style="font-size: 60%; text-align: right;">blog built using the <a href="https://github.com/jasonlong/cayman-theme">cayman-theme</a> by <a href="https://github.com/jasonlong">Jason Long</a>. <a href="http://creativecommons.org/licenses/by/4.0/">LICENSE</a></p>
+
+
+
+  </body>
+
+
+
+</html>
